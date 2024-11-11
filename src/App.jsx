@@ -1,4 +1,5 @@
 import margem_maisLogo from './assets/calculadora.png'
+import Sidebar from './components/Sidebar/index';
 import folhaLogo from './assets/folha.png';
 import './App.css'
 import { useState } from 'react'
@@ -17,21 +18,29 @@ function App() {
 
 
   function calcularMargem() {
-    const largura = 21.00 - margemDireita - margemEsquerda;
-    const altura = 29.70 - margemSuperior - margemInferior;
 
-    const x = 19 - largura;
-    const margensLaterais = (x / 2).toFixed(2);
+    if (margemDireita & margemEsquerda & margemInferior & margemSuperior) {
+      const largura = 21.00 - margemDireita - margemEsquerda;
+      const altura = 29.70 - margemSuperior - margemInferior;
 
-    const y = 25 - altura;
-    const margensSuperior = (y * 0.85).toFixed(2);
-    const margensInferior = (y * 0.15).toFixed(2);
+      const x = 19 - largura;
+      const margensLaterais = (x / 2).toFixed(2);
 
-    setResultadoMargemDireita(margensLaterais);
-    setResultadoMargemEsquerda(margensLaterais);
+      const y = 25 - altura;
+      const margensSuperior = (y * 0.85).toFixed(2);
+      const margensInferior = (y * 0.15).toFixed(2);
 
-    setResultadoMargemSuperior(margensSuperior);
-    setResultadoMargemInferior(margensInferior);
+      setResultadoMargemDireita(margensLaterais);
+      setResultadoMargemEsquerda(margensLaterais);
+
+      setResultadoMargemSuperior(margensSuperior);
+      setResultadoMargemInferior(margensInferior);
+
+      return;
+
+    }
+
+    alert("Preencha todas as margens para calcular!");
 
   }
 
@@ -49,11 +58,18 @@ function App() {
 
   return (
     <>
+
+      <Sidebar className='sidebar' />
+
       <div className='background'>
 
         {resultadoMargemDireita ? (
 
+
           <div class="card-left">
+
+            <h1 style={{ fontSize: 18 }}>O layout do cliente deve seguir este modelo</h1>
+
             <span class="margem-superior">{resultadoMargemSuperior}</span>
 
             <div class="logo-container">
@@ -172,6 +188,7 @@ function App() {
             <button onClick={calcularMargem}>
               Calcular margens
             </button>
+
           </div>
 
         </div>
@@ -179,7 +196,6 @@ function App() {
       </div>
 
       <div className="read-the-docs">
-        <p>Contribuindo com agilidade em seu dia!</p>
         <p>MK Innovations. Copyright © 2024. Todos os direitos reservados.</p>
       </div>
     </>

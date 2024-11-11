@@ -1,0 +1,11 @@
+.buttonOpen {
+    position: fixed;
+    right: 20px; /* Distância da borda direita */
+    top: 20px; /* Distância do topo (ajustei para 20px para ficar visível) */
+    padding: 10px 15px; /* Tamanho do botão */
+    color: black;
+    border: 1px solid black; /* Remove a borda do botão */
+    cursor: pointer; /* Mostra a mãozinha ao passar o mouse */
+    z-index: 1001; /* Garante que o botão fique acima de outros elementos */
+    border-radius: 5px; /* Bordas arredondadas */
+  }
