@@ -1,0 +1,71 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.background{
+  display: flex;
+  gap: 200px;
+}
+
+.card-left{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 12em;
+  /*padding: 1.1em;*/
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.card-margens {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 450px;
+  margin-bottom: 20px;
+}
+
+.card-margens div p {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.card-margens div input {
+  width: 80%;
+  padding: 10px;
+  background-color: #f9fafb; /* fundo suave */
+  border: 1px solid #e5e7eb; /* borda clara */
+  border-radius: 6px; /* bordas arredondadas */
+}
+
+.linha-horizontal {
+  width: 100%;        /* Largura da linha */
+  height: 1px;        /* Altura da linha */
+  background-color: #000; /* Cor da linha */
+  margin: 20px 0;     /* Espaço em volta da linha */
+}
+
+
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.read-the-docs {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
