@@ -53,13 +53,18 @@ function App() {
 
         {resultadoMargemDireita ? (
 
-          <div className='card-left'>
+          <div class="card-left">
+            <span class="margem-superior">{resultadoMargemSuperior}</span>
 
-            <img src={folhaLogo} className="logo" alt="Margem mais logo" />
+            <div class="logo-container">
+              <span class="margem-esquerda">{resultadoMargemEsquerda}</span>
+              <img src={folhaLogo} class="logo" alt="Margem mais logo" />
+              <span class="margem-direita">{resultadoMargemDireita}</span>
+            </div>
 
+            <span class="margem-inferior">{margemInferior}</span>
 
             <h1>Margem+</h1>
-
           </div>
 
         ) : (
