@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './index.css';
 
 const Sidebar = () => {
@@ -29,7 +30,11 @@ const Sidebar = () => {
       >
         <h2>Opções</h2>
         {/* Aqui você pode adicionar conteúdo para a sidebar */}
-        <a>Clientes</a>
+        <div className='options'>
+          <Link to="/">Home</Link>
+          <div class="linha-horizontal-nav"></div>
+          <Link to="/clientes">Clientes</Link>
+        </div>
       </div>
     </div>
   );
