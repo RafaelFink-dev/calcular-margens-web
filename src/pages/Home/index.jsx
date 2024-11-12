@@ -151,6 +151,7 @@ export default function Home() {
               <input
                 disabled={true}
                 value={resultadoMargemEsquerda}
+                style={{ cursor: 'not-allowed' }}
               />
             </div>
 
@@ -159,6 +160,7 @@ export default function Home() {
               <input
                 disabled={true}
                 value={resultadoMargemDireita}
+                style={{ cursor: 'not-allowed' }}
               />
             </div>
 
@@ -167,6 +169,7 @@ export default function Home() {
               <input
                 disabled={true}
                 value={resultadoMargemSuperior}
+                style={{ cursor: 'not-allowed' }}
               />
             </div>
 
@@ -175,6 +178,7 @@ export default function Home() {
               <input
                 disabled={true}
                 value={resultadoMargemInferior}
+                style={{ cursor: 'not-allowed' }}
               />
             </div>
 
