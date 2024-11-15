@@ -5,6 +5,8 @@ import '../../App.css'
 import { useState } from 'react'
 import { toast } from 'react-toastify';
 
+import Modal from '../../components/Modal';
+
 export default function Home() {
 
   const [margemSuperior, setMargemSuperior] = useState(0);
@@ -17,10 +19,14 @@ export default function Home() {
   const [resultadoMargemDireita, setResultadoMargemDireita] = useState(0);
   const [resultadoMargemEsquerda, setResultadoMargemEsquerda] = useState(0);
 
+  const [detailMargens, setDetailMargens] = useState();
+
+  const [showModal, setShowModal] = useState(false);
+
 
   function calcularMargem() {
 
-    if (margemDireita & margemEsquerda & margemInferior & margemSuperior) {
+    if (margemDireita && margemEsquerda && margemInferior && margemSuperior) {
       const largura = 21.00 - margemDireita - margemEsquerda;
       const altura = 29.70 - margemSuperior - margemInferior;
 
@@ -37,12 +43,18 @@ export default function Home() {
       setResultadoMargemSuperior(margensSuperior);
       setResultadoMargemInferior(margensInferior);
 
+      setDetailMargens({
+        direita: margensLaterais,
+        esquerda: margensLaterais,
+        superior: margensSuperior,
+        inferior: margensInferior
+      })
+
       return;
 
+    } else {
+      toast.warn("Preencha todas as margens para calcular!");
     }
-
-    toast.warn("Preencha todas as margens para calcular!");
-
   }
 
   function limparInputs() {
@@ -54,6 +66,19 @@ export default function Home() {
     setResultadoMargemInferior(0);
     setResultadoMargemDireita(0);
     setResultadoMargemEsquerda(0);
+    setDetailMargens();
+  }
+
+  function toggleModal(item) {
+
+    if (!detailMargens) {
+      toast.error('Calcule as margens antes de salvar!')
+      return;
+    }
+
+    setShowModal(!showModal);
+
+
   }
 
 
@@ -64,10 +89,15 @@ export default function Home() {
 
       <div className='background'>
 
+
         {resultadoMargemDireita ? (
 
 
           <div class="card-left">
+
+            <p>
+              Conversor de margens de <b>A4</b> para <b>19x25</b> compensando área útil.
+            </p>
 
             <h1 style={{ fontSize: 18 }}>O layout do cliente deve seguir este modelo</h1>
 
@@ -79,13 +109,18 @@ export default function Home() {
               <span class="margem-direita">{resultadoMargemDireita}</span>
             </div>
 
-            <span class="margem-inferior">{margemInferior}</span>
+            <span class="margem-inferior">{resultadoMargemInferior}</span>
 
             <h1>Margem+</h1>
           </div>
 
         ) : (
           <div className='card-left'>
+
+            <p>
+              Conversor de margens de <b>A4</b> para <b>19x25</b> compensando área útil.
+            </p>
+
             <img src={margem_maisLogo} className="logo" alt="Margem mais logo" />
 
             <h1>Margem+</h1>
@@ -94,9 +129,6 @@ export default function Home() {
         )}
 
         <div className="card">
-          <p>
-            Conversor de margens de <b>A4</b> para <b>19x25</b> compensando área útil.
-          </p>
 
           <b>Digite as margens originais do tipo de livro do cliente</b>
 
@@ -139,10 +171,10 @@ export default function Home() {
             </div>
 
           </div>
-
+          {/*
           <div class="linha-horizontal"></div>
 
-          <b>Abaixo configura as margens aproximandamente ajustadas</b>
+          <b>Abaixo configura as margens aproximadamente ajustadas</b>
 
           <div className='card-margens'>
 
@@ -184,6 +216,8 @@ export default function Home() {
 
           </div>
 
+          */}
+
           <div className='buttons'>
 
             <button onClick={limparInputs}>
@@ -194,11 +228,24 @@ export default function Home() {
               Calcular margens
             </button>
 
+            <button onClick={() => toggleModal()}>
+              Salvar margens
+            </button>
+
           </div>
 
         </div>
 
       </div>
+
+      {
+        showModal && (
+          <Modal
+            conteudo={detailMargens}
+            close={() => setShowModal(!showModal)}
+          />
+        )
+      }
 
       <div className="read-the-docs">
         <p>MK Innovations. Copyright © 2024. Todos os direitos reservados.</p>

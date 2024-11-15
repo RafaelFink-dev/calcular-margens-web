@@ -18,6 +18,15 @@
   gap: 15px;
 }
 
+.options a{
+  color: #ffffff;
+  transition: all 0.2s;
+}
+
+.options a:hover{
+  font-size: 20px;
+}
+
 .linha-horizontal-nav {
   display: flex;
   align-items: center;
@@ -26,4 +35,8 @@
   height: 2px;
   background-color: #FFF;
   margin: 10px 0;
+}
+
+.sidebar{
+  background-color: #272727;
 }

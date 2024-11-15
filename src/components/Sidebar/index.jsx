@@ -23,9 +23,9 @@ const Sidebar = () => {
           top: 0,
           width: '250px',
           height: '100vh',
-          backgroundColor: '#333',
           color: 'white',
           display: isSidebarOpen ? 'block' : 'none',
+          zIndex: 999
         }}
       >
         <h2>Opções</h2>
