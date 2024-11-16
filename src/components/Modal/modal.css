@@ -20,7 +20,7 @@
     margin: 0 auto;
     /*padding: 4em 2em;*/
     padding: 25px;
-    background-color: #1b1818;
+    background: linear-gradient(135deg, #1b1b2f, rgb(23, 22, 24));
     box-shadow: 0 0 20px rgb(15, 15, 15);
     border-radius: 10px;
 }

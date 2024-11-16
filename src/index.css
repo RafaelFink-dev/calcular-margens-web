@@ -68,7 +68,8 @@ input {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #11071F;
+    /*background-color: #1b1b2f;*/
+    background: linear-gradient(135deg, #1b1b2f, rgb(2, 2, 2));
   }
 
   a:hover {
@@ -80,7 +81,7 @@ input {
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
 
   a:hover {
     color: #747bff;
@@ -90,4 +91,4 @@ input {
     background-color: #fff;
     color: #000;
   }
-}
+}*/

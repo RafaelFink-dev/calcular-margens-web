@@ -22,7 +22,7 @@
   position: relative;
   text-align: center;
   padding-top: 20px; /* Adiciona um espaço no topo para garantir que o conteúdo superior apareça */
-  background-color: #0f061b; /* Ajuste a cor de fundo conforme necessário */
+  background: linear-gradient(135deg, #1b1b2f, rgb(23, 22, 24));
   border-radius: 20px; /* Bordas arredondadas */
   box-shadow: 0 0 30px 15px rgba(0, 0, 0, 0.781); /* Efeito de glow mais suave */
 }
