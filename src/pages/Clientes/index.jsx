@@ -5,6 +5,8 @@ import Sidebar from '../../components/Sidebar/';
 import { db } from '../../services/firebaseConnection';
 import { collection, doc, deleteDoc, onSnapshot } from 'firebase/firestore';
 
+import ModalEdit from "../../components/ModalEdit";
+
 import { toast } from "react-toastify";
 
 import { useEffect, useState } from "react";
@@ -15,6 +17,16 @@ export default function Clientes() {
 
     const [clientes, setClientes] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [showModal, setShowModal] = useState(false);
+    const [clienteEdited, setClienteEdited] = useState("");
+
+    function toggleModal(item) {
+
+        setClienteEdited(item)
+        setShowModal(!showModal);
+
+
+    }
 
     useEffect(() => {
 
@@ -107,7 +119,7 @@ export default function Clientes() {
                                                 <td data-label='Margem Direita'>{item.margems?.superior}</td>
                                                 <td data-label='Margem Direita'>{item.margems?.inferior}</td>
                                                 <td data-label='# - Editar'>
-                                                    <button className='action' onClick={() => { alert("ESTA SENDO CRIADO PORRA")}}>
+                                                    <button className='action' onClick={() => toggleModal(item)}>
                                                         Editar
                                                     </button>
                                                 </td>
@@ -126,6 +138,15 @@ export default function Clientes() {
                     </>
                 )}
             </div>
+
+            {
+                showModal && (
+                    <ModalEdit
+                        conteudo={clienteEdited}
+                        close={() => setShowModal(!showModal)}
+                    />
+                )
+            }
 
             <div className="read-the-docs">
                 <p>MK Innovations. Copyright © 2024. Todos os direitos reservados.</p>
