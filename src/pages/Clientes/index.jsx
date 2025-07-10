@@ -91,6 +91,7 @@ export default function Clientes() {
                                         <th scope='col'>Margem superior</th>
                                         <th scope='col'>Margem inferior</th>
                                         <th scope='col'>#</th>
+                                        <th scope='col'>#</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -105,7 +106,12 @@ export default function Clientes() {
                                                 <td data-label='Margem Direita'>{item.margems?.esquerda}</td>
                                                 <td data-label='Margem Direita'>{item.margems?.superior}</td>
                                                 <td data-label='Margem Direita'>{item.margems?.inferior}</td>
-                                                <td data-label='#'>
+                                                <td data-label='# - Editar'>
+                                                    <button className='action' onClick={() => { alert("ESTA SENDO CRIADO PORRA")}}>
+                                                        Editar
+                                                    </button>
+                                                </td>
+                                                <td data-label='# - Excluir'>
                                                     <button className='action' onClick={() => deleteCliente(item.id)}>
                                                         Excluir
                                                     </button>

@@ -5,6 +5,8 @@ import '../../App.css'
 import { useState } from 'react'
 import { toast } from 'react-toastify';
 
+import { Tooltip } from 'react-tooltip'
+
 import Modal from '../../components/Modal';
 
 export default function Home() {
@@ -84,7 +86,6 @@ export default function Home() {
 
   return (
     <>
-
       <Sidebar className='sidebar' />
 
       <div className='background'>

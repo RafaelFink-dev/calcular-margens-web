@@ -7,6 +7,8 @@ import App from './App.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import 'react-tooltip/dist/react-tooltip.css'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
