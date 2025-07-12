@@ -42,7 +42,8 @@ export default function Clientes() {
                         cidade: doc.data().cidade,
                         responsavel: doc.data().responsavel,
                         chamado: doc.data().chamado,
-                        margems: doc.data().margems
+                        margems: doc.data().margems,
+                        tipoLivro: doc.data().tipoLivro
                     })
 
                     setClientes(lista);
@@ -59,11 +60,14 @@ export default function Clientes() {
     }, [])
 
     async function deleteCliente(id) {
-        const docRef = doc(db, "clientes", id)
-        await deleteDoc(docRef);
-        toast.success("Cliente excluido com sucesso!");
-    }
+        const confirmDelete = window.confirm("Tem certeza que deseja excluir este cliente?");
 
+        if (confirmDelete) {
+            const docRef = doc(db, "clientes", id);
+            await deleteDoc(docRef);
+            toast.success("Cliente excluído com sucesso!");
+        }
+    }
     if (loading) {
         return (
             <div>
@@ -98,6 +102,7 @@ export default function Clientes() {
                                         <th scope='col'>Cidade</th>
                                         <th scope='col'>Responsável</th>
                                         <th scope='col'>Chamado</th>
+                                        <th scope='col'>Tipo de Livro</th>
                                         <th scope='col'>Margem esquerda</th>
                                         <th scope='col'>Margem direita</th>
                                         <th scope='col'>Margem superior</th>
@@ -114,6 +119,7 @@ export default function Clientes() {
                                                 <td data-label='Assunto'>{item.cidade}</td>
                                                 <td data-label='Cadastrado'>{item.responsavel}</td>
                                                 <td data-label='Chamado'>{item.chamado}</td>
+                                                <td data-label='Chamado'>{item.tipoLivro}</td>
                                                 <td data-label='Margem Direita'>{item.margems?.direita}</td>
                                                 <td data-label='Margem Direita'>{item.margems?.esquerda}</td>
                                                 <td data-label='Margem Direita'>{item.margems?.superior}</td>

@@ -11,6 +11,7 @@ export default function ModalEdit({ conteudo, close }) {
     const [cidade, setCidade] = useState(conteudo?.cidade || '');
     const [responsavel, setResponsavel] = useState(conteudo?.responsavel || '');
     const [chamado, setChamado] = useState(conteudo?.chamado || '');
+    const [tipoLivro, setTipoLivro] = useState(conteudo?.tipoLivro || '');
 
     const [margemDireita, setMargemDireita] = useState(conteudo?.margems?.direita || '');
     const [margemEsquerda, setMargemEsquerda] = useState(conteudo?.margems?.esquerda || '');
@@ -26,6 +27,7 @@ export default function ModalEdit({ conteudo, close }) {
                 cidade: cidade.toUpperCase(),
                 responsavel: responsavel.toUpperCase(),
                 chamado: chamado,
+                tipoLivro: tipoLivro,
                 margems: {
                     direita: margemDireita,
                     esquerda: margemEsquerda,
@@ -88,45 +90,63 @@ export default function ModalEdit({ conteudo, close }) {
                         />
                     </div>
 
+
+                    <div className='row'>
+                        <span>
+                            Tipo de livro (Matriculas/Registro Auxiliar):
+                        </span>
+                        <input
+                            value={tipoLivro}
+                            onChange={(e) => setTipoLivro(e.target.value)}
+                        />
+                    </div>
+
                     <div className='row'>
                         <span><strong>Margens (em mm):</strong></span>
 
-                        <label>
-                            Direita:
-                            <input
-                                type="number"
-                                value={margemDireita}
-                                onChange={(e) => setMargemDireita(e.target.value)}
-                            />
-                        </label>
+                        <div className="margens-row">
+                            <div className="margens-col">
+                                <label>
+                                    Direita:
+                                    <input
+                                        type="number"
+                                        value={margemDireita}
+                                        onChange={(e) => setMargemDireita(e.target.value)}
+                                    />
+                                </label>
 
-                        <label>
-                            Esquerda:
-                            <input
-                                type="number"
-                                value={margemEsquerda}
-                                onChange={(e) => setMargemEsquerda(e.target.value)}
-                            />
-                        </label>
+                                <label>
+                                    Esquerda:
+                                    <input
+                                        type="number"
+                                        value={margemEsquerda}
+                                        onChange={(e) => setMargemEsquerda(e.target.value)}
+                                    />
+                                </label>
+                            </div>
 
-                        <label>
-                            Superior:
-                            <input
-                                type="number"
-                                value={margemSuperior}
-                                onChange={(e) => setMargemSuperior(e.target.value)}
-                            />
-                        </label>
+                            <div className="margens-col">
+                                <label>
+                                    Superior:
+                                    <input
+                                        type="number"
+                                        value={margemSuperior}
+                                        onChange={(e) => setMargemSuperior(e.target.value)}
+                                    />
+                                </label>
 
-                        <label>
-                            Inferior:
-                            <input
-                                type="number"
-                                value={margemInferior}
-                                onChange={(e) => setMargemInferior(e.target.value)}
-                            />
-                        </label>
+                                <label>
+                                    Inferior:
+                                    <input
+                                        type="number"
+                                        value={margemInferior}
+                                        onChange={(e) => setMargemInferior(e.target.value)}
+                                    />
+                                </label>
+                            </div>
+                        </div>
                     </div>
+
 
                     <button onClick={handleUpdate}>
                         Salvar

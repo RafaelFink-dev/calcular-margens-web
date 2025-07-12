@@ -11,16 +11,18 @@ export default function Modal({ conteudo, close }) {
     const [cidade, setCidade] = useState('');
     const [responsavel, setResponsavel] = useState('');
     const [chamado, setChamado] = useState(0);
+    const [tipoLivro, setTipoLivro] = useState('');
 
     async function handleRegister() {
 
-        if (cliente && cidade && responsavel && chamado) {
+        if (cliente && cidade && responsavel && chamado && tipoLivro) {
 
             await addDoc(collection(db, "clientes"), {
                 nomeCliente: cliente.toUpperCase(),
                 cidade: cidade.toUpperCase(),
                 responsavel: responsavel.toUpperCase(),
-                chamado: chamado,
+                chamado: `#${chamado}`,
+                tipoLivro: tipoLivro.toUpperCase(),
                 margems: {
                     direita: conteudo.direita,
                     esquerda: conteudo.esquerda,
@@ -32,8 +34,10 @@ export default function Modal({ conteudo, close }) {
                     toast.success('Margem adicionada com sucesso!')
                     setResponsavel('')
                     setChamado(0)
+                    setTipoLivro('')
                     setCliente('')
                     setCidade('')
+                    close();
 
                     return;
                 })
@@ -95,9 +99,21 @@ export default function Modal({ conteudo, close }) {
                         </span>
                         <input
                             value={chamado}
+                            type='number'
                             onChange={(e) => setChamado(e.target.value)}
                         />
                     </div>
+
+                    <div className='row'>
+                        <span>
+                            Tipo de livro (Matriculas/Registro Auxiliar):
+                        </span>
+                        <input
+                            value={tipoLivro}
+                            onChange={(e) => setTipoLivro(e.target.value)}
+                        />
+                    </div>
+
 
                     <div className='row'>
                         <span>
