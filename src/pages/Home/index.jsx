@@ -25,10 +25,47 @@ export default function Home() {
 
   const [showModal, setShowModal] = useState(false);
 
+  const MARGEM_MINIMA = 0.5; // valor mínimo aceitável
+
 
   function calcularMargem() {
 
     if (margemDireita && margemEsquerda && margemInferior && margemSuperior) {
+
+
+      if (margemSuperior < 3 && margemInferior < 3) {
+        alert("entrou aqui");
+
+        {/*const largura = 21.00 - margemDireita - margemEsquerda;
+        const altura = 29.00 - margemSuperior - margemInferior;*/}
+
+
+        const largura = 21.60 - margemDireita - margemEsquerda;
+        const altura = 35.60 - margemSuperior - margemInferior;
+
+        const x = 19 - largura;
+        const margensLaterais = Math.max((x / 2).toFixed(2), MARGEM_MINIMA); // nunca menor que 0.5
+
+        const y = 25 - altura;
+        const margensSuperior = Math.max((y * 0.45).toFixed(2), MARGEM_MINIMA);
+        const margensInferior = Math.max((y * 0.45).toFixed(2), MARGEM_MINIMA);
+
+        setResultadoMargemDireita(margensLaterais);
+        setResultadoMargemEsquerda(margensLaterais);
+
+        setResultadoMargemSuperior(margensSuperior);
+        setResultadoMargemInferior(margensInferior);
+
+        setDetailMargens({
+          direita: margensLaterais,
+          esquerda: margensLaterais,
+          superior: margensSuperior,
+          inferior: margensInferior
+        });
+
+        return;
+      }
+
       const largura = 21.00 - margemDireita - margemEsquerda;
       const altura = 29.70 - margemSuperior - margemInferior;
 
