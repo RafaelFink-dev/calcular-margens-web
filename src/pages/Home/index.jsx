@@ -36,12 +36,9 @@ export default function Home() {
       if (margemSuperior < 3 && margemInferior < 3) {
         alert("entrou aqui");
 
-        {/*const largura = 21.00 - margemDireita - margemEsquerda;
-        const altura = 29.00 - margemSuperior - margemInferior;*/}
+        const largura = 21.00 - margemDireita - margemEsquerda;
+        const altura = 29.00 - margemSuperior - margemInferior;
 
-
-        const largura = 21.60 - margemDireita - margemEsquerda;
-        const altura = 35.60 - margemSuperior - margemInferior;
 
         const x = 19 - largura;
         const margensLaterais = Math.max((x / 2).toFixed(2), MARGEM_MINIMA); // nunca menor que 0.5
